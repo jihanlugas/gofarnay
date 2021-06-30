@@ -49,9 +49,10 @@ func RespondWithJSONAddToken(w http.ResponseWriter, code int, payload interface{
 	w.Header().Set("Content-Type", "application/json")
 
 	http.SetCookie(w, &http.Cookie{
-		Name:       "token",
+		Name:       "Authorization",
 		Value:      token,
 		Expires: 	time.Now().Add(time.Minute * 5),
+		//Domain: "tess.com",
 	})
 
 	w.WriteHeader(code)
